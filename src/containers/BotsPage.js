@@ -1,12 +1,14 @@
 import React from "react";
 import BotCollection from "./BotCollection";
 import YourBotArmy from "./YourBotArmy";
+import BotSpecs from "../components/BotSpecs"
 
 class BotsPage extends React.Component {
   //start here with your code for step one
   state = {
     bots: [],
-    myArmy: []
+    myArmy: [],
+    showView: false
   }
   
   
@@ -24,13 +26,19 @@ class BotsPage extends React.Component {
     // event.persist()
     // console.log(event);
     // this.state.myArmy.push(bot)
-    if (this.state.myArmy.find((b) => b.id === bot.id)) {
-      alert("Can only have one of these in the army!")
-      return;
-    }
+
+    console.log(this.state.bots)
     this.setState({
-      myArmy: [...this.state.myArmy, bot]
+      showView: true
     })
+
+    // if (this.state.myArmy.find((b) => b.id === bot.id)) {
+    //   alert("Can only have one of these in the army!")
+    //   return;
+    // }
+    // this.setState({
+    //   myArmy: [...this.state.myArmy, bot]
+    // })
     // console.log(this.state.myArmy)
   }
 
@@ -55,13 +63,30 @@ class BotsPage extends React.Component {
     // console.log(this.state.myArmy)
   }
 
+  renderView() {
+    if (!this.state.showView) {
+      return (
+        <div>
+          <YourBotArmy handleArmyClick={this.handleArmyClick} myArmy={this.state.myArmy} />
+          <BotCollection handleClick={this.handleClick} bots={this.state.bots} />
+        </div>
+      ) 
+    } else {      
+      return (
+        <div>
+          <YourBotArmy handleArmyClick={this.handleArmyClick} myArmy={this.state.myArmy} />
+          <BotSpecs bots={this.state.bots}/>
+        </div>
+    ) 
+    }
+  }
+
   render() {
     return (
       <div>
-          <YourBotArmy handleArmyClick={this.handleArmyClick} myArmy={this.state.myArmy} />
-          <BotCollection handleClick={this.handleClick} bots={this.state.bots} />
+        {this.renderView()}
       </div>
-    );
+    )
   }
 
 }
