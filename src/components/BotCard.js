@@ -1,10 +1,9 @@
 import React from "react";
 
 const BotCard = props => {
-  const { bot } = props;
+  const {bot} = props;
 
   let botType;
-
   switch (bot.bot_class) {
     case "Assault":
       botType = <i className="icon military" />;
@@ -16,19 +15,29 @@ const BotCard = props => {
       botType = <i className="icon ambulance" />;
       break;
     default:
-      botType = <div />;
+      botType = <div/>;
   }
 
+  const handleClick = (e) => {
+    e.preventDefault()
+    props.handleClick(bot) //
+  }
+
+  //remove bot by matching id with the e.target then changing the state  
+
+
+
   return (
-    <div className="ui column">
+    <div className="ui column" >
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        onClick={handleClick}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
         </div>
+
         <div className="content">
           <div className="header">
             {bot.name} {botType}
@@ -38,6 +47,7 @@ const BotCard = props => {
             <small>{bot.catchphrase}</small>
           </div>
         </div>
+        
         <div className="extra content">
           <span>
             <i className="icon heartbeat" />
@@ -59,4 +69,4 @@ const BotCard = props => {
 
 };
 
-export default BotCard;
+export default BotCard
