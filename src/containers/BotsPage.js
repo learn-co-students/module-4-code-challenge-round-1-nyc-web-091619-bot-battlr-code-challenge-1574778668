@@ -53,14 +53,12 @@ class BotsPage extends React.Component {
     return (
       <div>
         <YourBotArmy bots={this.state.yourRobots} showHandler={this.showHandler}/>
-        {/* Need to conditionally render BotCollection depending on some state */}
         {
           this.state.showView ? 
           <BotSpecs bot={this.state.showBot} showHandler={this.showHandler} enlistOrDischargeRobot={this.enlistOrDischargeRobot}/> :
           <BotCollection bots={this.state.robots} showHandler={this.showHandler} />
 
         }
-        {/* put your components here */}
       </div>
     );
   }
