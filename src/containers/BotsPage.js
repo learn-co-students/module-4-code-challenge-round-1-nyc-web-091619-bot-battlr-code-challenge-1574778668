@@ -6,7 +6,8 @@ class BotsPage extends React.Component {
 
   state = {
     allBots: [], 
-    MyBots: []
+    MyBots: [], 
+    clicked: false
   }
 
   componentDidMount() {
@@ -22,6 +23,12 @@ class BotsPage extends React.Component {
 
   }
 
+
+  setClicked = () => {
+    this.setState({
+      clicked: true 
+    })
+  }
 
   addBot = (bot) => {
     if(this.state.MyBots.includes(bot)) {
@@ -48,7 +55,7 @@ class BotsPage extends React.Component {
     return (
       <div>
         <YourBotArmy myBots= {this.state.MyBots} removeBot={this.removeBot}/>
-        <BotCollection allBots={this.state.allBots} addBot={this.addBot} MyBots={this.state.MyBots}/>
+        <BotCollection allBots={this.state.allBots} addBot={this.addBot} MyBots={this.state.MyBots} setClicked={this.setClicked} clicked={this.state.clicked}/>
       
       </div>
     );

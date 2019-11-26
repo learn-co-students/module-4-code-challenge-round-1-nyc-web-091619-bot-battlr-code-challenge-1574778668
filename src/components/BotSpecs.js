@@ -5,6 +5,10 @@ const BotSpecs = props => {
 
   let botType;
 
+  let clickHandler= (bot) => {
+    props.addBot(bot)
+  }
+
   switch (bot.bot_class) {
     case "Assault":
       botType = <i className="icon large circular military" />;
@@ -68,11 +72,7 @@ const BotSpecs = props => {
             </button>
             <button
               className="ui button fluid"
-              onClick={() =>
-                console.log(
-                  "connect this to a function that adds this bot to your bot army list"
-                )
-              }
+              onClick={clickHandler}
             >
               Enlist
             </button>
