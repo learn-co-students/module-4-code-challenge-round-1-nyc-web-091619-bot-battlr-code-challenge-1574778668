@@ -3,6 +3,7 @@ import React from "react";
 import BotCollection from './BotCollection'
 import YourBotArmy from "./YourBotArmy";
 import BotSpecs from "../components/BotSpecs";
+import BotSort from "../components/BotSort";
 
 class BotsPage extends React.Component {
   //start here with your code for step one
@@ -14,6 +15,8 @@ class BotsPage extends React.Component {
     showBot: {},
   }
 
+
+
   enlistOrDischargeRobot = (bot) => {
     bot.inArmy = !bot.inArmy
     this.setState(prevState => (
@@ -24,6 +27,20 @@ class BotsPage extends React.Component {
         showView: false,
       }
     ))
+  }
+
+  submitHandler = event => {
+    event.persist()
+    event.preventDefault()
+    const [attribute, sortOrder] = [event.target[0].value, parseInt(event.target[1].value, 10)]
+    console.log(attribute, sortOrder)
+
+    this.setState(prevState => ({
+      robots: [...prevState.robots.sort((rob1, rob2) => {
+        return rob1[`${attribute}`] > rob2[`${attribute}`] ? sortOrder : -1 * sortOrder
+      })]
+    })
+    )
   }
 
   showHandler = bot => {
@@ -53,6 +70,9 @@ class BotsPage extends React.Component {
     return (
       <div>
         <YourBotArmy bots={this.state.yourRobots} showHandler={this.showHandler}/>
+        <BotSort className='centered' submitHandler={this.submitHandler} />
+        <br />
+        <br />
         {
           this.state.showView ? 
           <BotSpecs bot={this.state.showBot} showHandler={this.showHandler} enlistOrDischargeRobot={this.enlistOrDischargeRobot}/> :
