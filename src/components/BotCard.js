@@ -5,10 +5,6 @@ const BotCard = props => {
 
   let botType;
 
-  const handleClick = () => {
-    props.clickHandler(bot)
-  }
-
   switch (bot.bot_class) {
     case "Assault":
       botType = <i className="icon military" />;
@@ -23,12 +19,19 @@ const BotCard = props => {
       botType = <div />;
   }
 
+  // Depending on if a bot that's in the army or not, either epxand details 
+  // OR remove from the army (mainClickHandler is passed as a different function
+  // from BotsCollection vs YourBotArmy)
+  const handleMainClick = () =>{
+    props.mainClickHandler(bot)
+  }
+
   return (
-    <div className="ui column">
+      <div className="ui column">
       <div
         className="ui card"
         key={bot.id}
-        onClick={handleClick}
+        onClick={handleMainClick}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
@@ -59,7 +62,7 @@ const BotCard = props => {
         </div>
       </div>
     </div>
-  );
+  )
 
 };
 

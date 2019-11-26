@@ -2,9 +2,10 @@ import React from "react";
 import BotCard from "../components/BotCard";
 
 class YourBotArmy extends React.Component {
-  //your bot army code here..
+ 
+  // Renders a list of bots with mainClickHandler set to removeFromArmy from BotsPage
   renderBots = () => {
-    return this.props.bots.map(bot => <BotCard clickHandler={this.props.removeFromArmy} bot={bot} key={bot.id}/>)
+    return this.props.bots.map(bot => <BotCard mainClickHandler={this.props.removeFromArmy} bot={bot} key={bot.id}/>)
   }
 
   render(){
