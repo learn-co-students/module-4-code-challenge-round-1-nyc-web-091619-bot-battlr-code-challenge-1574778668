@@ -10,6 +10,7 @@ class BotsPage extends React.Component {
     army: []
   }
 
+  // add the given bot to the army in state
   addToArmy = (bot) => {
     if(this.state.army.find(aBot => aBot.id === bot.id) === undefined){
       this.setState({
@@ -24,6 +25,7 @@ class BotsPage extends React.Component {
     
   }
 
+  //remove the given bot from the state army
   removeFromArmy = (removeBot) => {
     let newArmy = this.state.army.filter(bot=> bot.id !== removeBot.id)
     this.setState({
@@ -31,6 +33,7 @@ class BotsPage extends React.Component {
     })
   }
   
+  //make the initial fetch upon mount
   componentDidMount(){
     fetch(URL)
     .then(resp=> resp.json())
