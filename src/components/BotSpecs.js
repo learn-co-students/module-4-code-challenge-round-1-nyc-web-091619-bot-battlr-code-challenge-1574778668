@@ -19,13 +19,13 @@ const BotSpecs = props => {
       botType = <div />;
   }
 
-  // Add the bot to the army, and also reset to show entire collection
+  // Add the bot to the army, and also reset to show entire collection & clear filters
   const handleEnlistClick = () => {
     props.addToArmy(bot)
     props.goBack()
   }
 
-  // Calls parent function to show all bots
+  // Calls parent function to show all bots & clear filters
   const handleGoBackClick = () => {
     props.goBack()
   }
@@ -71,13 +71,13 @@ const BotSpecs = props => {
             </div>
             <button
               className="ui button fluid"
-              onClick={handleGoBackClick}
+              onClick={handleGoBackClick} // calls prop function to clear currentBot and all filters
             >
               Go Back
             </button>
             <button
               className="ui button fluid"
-              onClick={handleEnlistClick}
+              onClick={handleEnlistClick} // calls prop function to set state of army, then clear current bot
             >
               Enlist
             </button>

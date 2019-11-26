@@ -31,7 +31,7 @@ const BotCard = props => {
       <div
         className="ui card"
         key={bot.id}
-        onClick={handleMainClick}
+        onClick={handleMainClick} // this is decided by the prop passed 
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />

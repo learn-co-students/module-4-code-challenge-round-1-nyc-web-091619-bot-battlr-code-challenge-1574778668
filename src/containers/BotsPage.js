@@ -12,6 +12,8 @@ class BotsPage extends React.Component {
 
   // add the given bot to the army in state
   addToArmy = (bot) => {
+
+    //only add if they aren't already there!
     if(this.state.army.find(aBot => aBot.id === bot.id) === undefined){
       this.setState({
         army: [
