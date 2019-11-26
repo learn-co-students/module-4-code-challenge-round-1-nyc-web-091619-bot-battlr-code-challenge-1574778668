@@ -5,7 +5,7 @@ class YourBotArmy extends React.Component {
   //your bot army code here...
   renderBotCollection = () => {
 		let robots = this.props.bots
-		return robots.map((robot, idx) => <BotCard key={idx} bot={robot} enlistOrDischargeRobot={this.props.enlistOrDischargeRobot}/>)
+		return robots.map((robot, idx) => <BotCard key={idx} bot={robot} showHandler={this.props.showHandler}/>)
 	}
 
   render(){

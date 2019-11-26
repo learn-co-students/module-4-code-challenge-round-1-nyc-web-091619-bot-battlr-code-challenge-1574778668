@@ -2,13 +2,16 @@ import React from "react";
 
 import BotCollection from './BotCollection'
 import YourBotArmy from "./YourBotArmy";
+import BotSpecs from "../components/BotSpecs";
 
 class BotsPage extends React.Component {
   //start here with your code for step one
 
   state = {
     robots: [],
-    yourRobots: []
+    yourRobots: [],
+    showView: false,
+    showBot: {},
   }
 
   enlistOrDischargeRobot = (bot) => {
@@ -17,9 +20,21 @@ class BotsPage extends React.Component {
       {
         yourRobots: prevState.robots.filter(robot => {
           return robot.inArmy
-        })
+        }),
+        showView: false,
       }
     ))
+  }
+
+  showHandler = bot => {
+
+    this.setState(prevState => (
+      {
+      showView: !prevState.showView,
+      showBot: bot
+      }
+     )
+    )
   }
 
   fetchRobos = () => {
@@ -37,8 +52,14 @@ class BotsPage extends React.Component {
   render() {
     return (
       <div>
-        <YourBotArmy bots={this.state.yourRobots} enlistOrDischargeRobot={this.enlistOrDischargeRobot}/>
-        <BotCollection bots={this.state.robots} enlistOrDischargeRobot={this.enlistOrDischargeRobot}/>
+        <YourBotArmy bots={this.state.yourRobots} showHandler={this.showHandler}/>
+        {/* Need to conditionally render BotCollection depending on some state */}
+        {
+          this.state.showView ? 
+          <BotSpecs bot={this.state.showBot} showHandler={this.showHandler} enlistOrDischargeRobot={this.enlistOrDischargeRobot}/> :
+          <BotCollection bots={this.state.robots} showHandler={this.showHandler} />
+
+        }
         {/* put your components here */}
       </div>
     );
