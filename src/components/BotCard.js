@@ -5,7 +5,7 @@ class BotCard extends React.Component {
     if (this.props.isArmy === true) {
       this.props.handleDischarging(this.props.bot);
     } else {
-      this.props.handleEnlisting(this.props.bot);
+      this.props.handleBotShowPage(this.props.bot);
     }
   };
 
