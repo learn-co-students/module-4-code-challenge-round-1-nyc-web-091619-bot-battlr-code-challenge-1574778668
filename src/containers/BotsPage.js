@@ -22,7 +22,7 @@ class BotsPage extends React.Component {
     this.setState((prevState)=> {
       const newBots = prevState.yourBots.push(bot)
       return {yourbots: newBots}
-      // console.log(this.state.yourBots)
+      // console.log(this.props.yourBots)
     })
     // console.log(this.state.yourBots)
   }
@@ -40,7 +40,6 @@ class BotsPage extends React.Component {
 }
 
 export default BotsPage;
-
 
 // Set State
 // ComponentWillMount - fetch - this.setState
