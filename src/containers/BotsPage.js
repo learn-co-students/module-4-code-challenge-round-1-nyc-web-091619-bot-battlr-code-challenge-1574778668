@@ -24,7 +24,10 @@ class BotsPage extends React.Component {
           handleDischarging={this.handleDischarging}
         />
         {this.state.renderBot === true ? (
-          <BotSpecs bot={this.state.bot} />
+          <BotSpecs
+            bot={this.state.bot}
+            handleEnlisting={this.handleEnlisting}
+          />
         ) : (
           <BotCollection
             bots={this.state.bots}
@@ -47,16 +50,13 @@ class BotsPage extends React.Component {
     console.log("show page");
     const renderBot = true;
     this.setState({ renderBot: renderBot, bot: bot });
-    // when a bot is clicked, clear the 'bots' state and add in our selected bot
-    // create a condition in our render method, that if 'bots' state === 1, render a show page
-    //  otherwise, render the BotsCollection
   };
 
   handleEnlisting = clickedBot => {
     const bot = this.state.bots.filter(bot => bot.id === clickedBot.id);
     const army = [...this.state.army];
     army.push(bot);
-    this.setState({ army: army });
+    this.setState({ army: army, renderBot: false });
   };
 
   handleDischarging = bot => {
