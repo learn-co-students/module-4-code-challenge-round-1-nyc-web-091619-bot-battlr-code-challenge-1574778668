@@ -1,9 +1,19 @@
 import React from "react";
 
 const BotCard = props => {
+  
   const { bot } = props;
 
   let botType;
+
+
+  let clickHandler = () => {
+
+
+    props.clickFunction(props)
+
+
+  }
 
   switch (bot.bot_class) {
     case "Assault":
@@ -24,7 +34,7 @@ const BotCard = props => {
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        onClick={clickHandler}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
