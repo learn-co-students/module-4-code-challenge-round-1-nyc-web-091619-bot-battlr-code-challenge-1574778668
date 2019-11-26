@@ -24,32 +24,33 @@ const BotCard = props => {
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        id={bot.id}
+        onClick={props.enlistHandler}
       >
-        <div className="image">
-          <img alt="oh no!" src={bot.avatar_url} />
+        <div className="image" id={bot.id} >
+          <img alt="oh no!" src={bot.avatar_url} id={bot.id} />
         </div>
-        <div className="content">
-          <div className="header">
+        <div className="content" id={bot.id} >
+          <div className="header" id={bot.id}>
             {bot.name} {botType}
           </div>
 
-          <div className="meta text-wrap">
-            <small>{bot.catchphrase}</small>
+          <div className="meta text-wrap" id={bot.id} >
+            <small id={bot.id}>{bot.catchphrase}</small>
           </div>
         </div>
-        <div className="extra content">
-          <span>
-            <i className="icon heartbeat" />
+        <div className="extra content" id={bot.id}>
+          <span id={bot.id}>
+            <i className="icon heartbeat" id={bot.id}/>
             {bot.health}
           </span>
 
-          <span>
-            <i className="icon lightning" />
+          <span id={bot.id}>
+            <i className="icon lightning" id={bot.id}/>
             {bot.damage}
           </span>
-          <span>
-            <i className="icon shield" />
+          <span id={bot.id}>
+            <i className="icon shield" id={bot.id}/>
             {bot.armor}
           </span>
         </div>
