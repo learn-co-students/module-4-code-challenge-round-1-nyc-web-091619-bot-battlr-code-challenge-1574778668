@@ -19,12 +19,16 @@ const BotCard = props => {
       botType = <div />;
   }
 
+  let handleClick = (event) => {event.preventDefault() 
+    props.handleClick(bot)
+  }
+
   return (
-    <div className="ui column">
+    <div className="ui column" >
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        onClick={handleClick}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
@@ -60,3 +64,5 @@ const BotCard = props => {
 };
 
 export default BotCard;
+
+// Put handleclick - event prevent default ?
