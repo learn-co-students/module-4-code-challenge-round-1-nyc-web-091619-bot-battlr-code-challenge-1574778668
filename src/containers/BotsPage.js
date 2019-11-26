@@ -3,7 +3,7 @@ import BotCollection from "./BotCollection";
 import YourBotArmy from "./YourBotArmy";
 import BotSpecs from "../components/BotSpecs";
 
-let clickedBot = null
+// let clickedBot = null
 
 class BotsPage extends React.Component {
   
@@ -22,7 +22,7 @@ class BotsPage extends React.Component {
 
   enlistHandler = (event) => {
     let botID = event.target.id
-    clickedBot = this.state.bots.find(bot => bot.id == botID)
+    let clickedBot = this.state.bots.find(bot => bot.id == botID)
     let removingBot = this.state.enlisted.find(bot => bot.id == botID)
     
     if (this.state.bots.includes(clickedBot)){
@@ -56,10 +56,10 @@ class BotsPage extends React.Component {
           <YourBotArmy 
             enlisted = {this.state.enlisted} 
             enlistHandler = {this.enlistHandler} />
-          (clickedBot)
-          ?
-          <BotSpecs bot = {clickedBot}/>
-          :
+          {/* (clickedBot) */}
+          {/* ? */}
+          {/* <BotSpecs bot = {clickedBot}/> */}
+          {/* : */}
           <BotCollection 
             bots = {this.state.bots}
             enlistHandler = {this.enlistHandler} />
